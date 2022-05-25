@@ -5,5 +5,40 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id ="WebApp_ID"
          version="3.0">
-    <display-name>App</display-name>
+    <servlet>
+        <servlet-name>demo-servlet</servlet-name>
+        <display-name>Demo Servlet</display-name>
+        <servlet-class>
+            org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet
+        </servlet-class>
+        <init-param>
+            <param-name>jaxrs.serviceClasses</param-name>
+            <param-value>
+                demo.rest.HelloRestService
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>jaxrs.providers</param-name>
+            <param-value>
+                demo.rest.HelloRestService
+            </param-value>
+        </init-param>
+
+        <!-- registers extension mappings -->
+        <init-param>
+            <param-name>jaxrs.extensions</param-name>
+            <param-value>
+                xml=application/xml
+                json=application/json
+            </param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>demo-servlet</servlet-name>
+        <!--Prefix for endpoint-->
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
 </web-app>
