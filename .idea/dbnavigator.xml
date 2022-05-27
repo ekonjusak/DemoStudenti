@@ -22,7 +22,7 @@
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
-    <autoscroll-to-editor value="false" />
+    <autoscroll-to-editor value="true" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes />
@@ -30,6 +30,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="6949574f-e3fd-4d09-a893-37fe4c8178c8">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
+      <console name="demostudenti" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -71,13 +72,15 @@
     <diagnostics-history />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="SQLITE" interface-id="DEFAULT" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
       <connection id="6949574f-e3fd-4d09-a893-37fe4c8178c8" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="demostudenti" />
           <description value="SQlite Demo" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />

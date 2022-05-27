@@ -1,5 +1,7 @@
 package demo.rest;
 
+import demo.database.DBConnectionTest;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -8,9 +10,10 @@ import javax.ws.rs.core.Response;
 public class HelloRestService {
     @GET // This annotation indicates GET request
     @Path("/hello")
-    public Response hello() {
+    public Response hello() throws ClassNotFoundException {
         System.out.println("ovdje nesto napisi  223");
-        return Response.status(200).entity("hello 223 ").build();
+        String res = DBConnectionTest.getAll();
+        return Response.status(200).entity(res).build();
     }
     @POST
     @Path("/post")

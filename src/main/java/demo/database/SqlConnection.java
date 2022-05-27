@@ -9,8 +9,8 @@ public class SqlConnection {
 
     private void DBConnection(){}
 
-    public static Connection getConnection()
-    {
+    public static Connection getConnection() throws ClassNotFoundException {
+        Class.forName("org.sqlite.JDBC");
         try
         {
             if(conn==null)
@@ -23,7 +23,6 @@ public class SqlConnection {
         {
             e.printStackTrace();
         }
-
         return conn;
     }
 }
