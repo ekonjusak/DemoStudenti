@@ -27,11 +27,11 @@
 * in left top corner find '+' icon and click 
 * find 'smart tomcat'
 
-* fill inputs with tomcat configurations
-* tomcat server: find in files where your tomcat is locally saved
-* deployment directory: ...yourProject/.../webapp
-* server port and admin port leave default
-* click ok
+* fill inputs with tomcat configurations:
+  * tomcat server: find in files where your tomcat is locally saved
+  * deployment directory: ...yourProject/.../webapp
+  * server port and admin port leave default
+  * click ok
 
 * now you can see green play button next to the 'configuration' dialog
 * run tomcat 
@@ -99,7 +99,6 @@ public class HelloRestService {
         System.out.println("ovdje nesto napisi  223");
         return Response.status(200).entity("hello 223 ").build();
     }
-    // post - u log upisi 'pozvo si me'
 }
 ```
 #### main.webapp folder
@@ -205,7 +204,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 * click on compile
 * click on package
 * click on green play button next to the server
-* click on given link (something like: http://localhost:8080/ProjectName)
+* in Tomcat logs click on given link (something like: http://localhost:8080/ProjectName)
 * in your browser add on link '/hello' (http://localhost:8080/ProjectName/hello)
 * there should be message 'hello 223'
 * if you look in tomcat log at the bottom of InteliJ, there is message 'ovdje nesto pisi 223'

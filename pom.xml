@@ -20,14 +20,21 @@
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
             <version>3.5.2</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.36.0.3</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <!--Indicate that its a web app-->
     <packaging>war</packaging>
 
