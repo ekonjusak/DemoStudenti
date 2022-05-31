@@ -30,14 +30,14 @@ public class HelloRestService {
     @Path("/poststudent")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public ResultSet createStudent(@FormParam("id") String id,
+    public ResultSet createStudent(@FormParam("id") Number id,
                                    @FormParam("email") String email,
+                                   @FormParam("ime") String ime,
                                    @FormParam("mentorid") Number mentorid,
                                    @FormParam("oib") Number oib,
                                    @FormParam("phonenumber") String phonenumber
                                 ) throws ClassNotFoundException {
-        ResultSet res = DBConnectionTest.createStudent();
 
-        return res;
+        return DBConnectionTest.createStudent(25, "moj.mail@gmail.hr", "mojeime",2, 659874123, "0915874235");
     }
 }

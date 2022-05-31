@@ -57,14 +57,14 @@ public class DBConnectionTest {
         return red;
     }
 
-    static public ResultSet createStudent() throws ClassNotFoundException {
+    static public ResultSet createStudent(Number id, String email, String ime, Number mentorid, Number oib, String phonenumber) throws ClassNotFoundException {
 
         Connection conn = SqlConnection.getConnection();
         ResultSet rst = null;
         System.out.println("u metodi");
         try
         {
-            String query = "insert into student(id, email,ime, mentorid,oib,phonenumber) values(25, 'mail.moj@gmail.com', 2, 12369854, '099587412')";
+            String query = "insert into student( id, email,ime,mentorid,oib,phonenumber) values("+ id +","+ email +","+ime+","+ mentorid+","+oib+","+phonenumber+")";
             Statement st = conn.createStatement();
             rst = st.executeQuery(query);
 
