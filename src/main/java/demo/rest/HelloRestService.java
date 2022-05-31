@@ -5,6 +5,7 @@ import demo.database.DBConnectionTest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.ResultSet;
 
 @Path("/")
 public class HelloRestService {
@@ -23,5 +24,20 @@ public class HelloRestService {
                                  @FormParam("address") String address,
                                  @FormParam("phone-number") String phoneNumber) {
         return "name, address, phoneNumber " + name;
+    }
+
+    @POST
+    @Path("/poststudent")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public ResultSet createStudent(@FormParam("id") String id,
+                                   @FormParam("email") String email,
+                                   @FormParam("mentorid") Number mentorid,
+                                   @FormParam("oib") Number oib,
+                                   @FormParam("phonenumber") String phonenumber
+                                ) throws ClassNotFoundException {
+        ResultSet res = DBConnectionTest.createStudent();
+
+        return res;
     }
 }

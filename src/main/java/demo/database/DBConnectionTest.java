@@ -56,4 +56,22 @@ public class DBConnectionTest {
         }
         return red;
     }
+
+    static public ResultSet createStudent() throws ClassNotFoundException {
+
+        Connection conn = SqlConnection.getConnection();
+        ResultSet rst = null;
+        System.out.println("u metodi");
+        try
+        {
+            String query = "insert into student(id, email,ime, mentorid,oib,phonenumber) values(25, 'mail.moj@gmail.com', 2, 12369854, '099587412')";
+            Statement st = conn.createStatement();
+            rst = st.executeQuery(query);
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return rst;
+    }
 }
