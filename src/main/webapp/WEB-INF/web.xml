@@ -20,18 +20,18 @@
         <init-param>
             <param-name>jaxrs.providers</param-name>
             <param-value>
-                demo.rest.HelloRestService
+                com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider
             </param-value>
         </init-param>
 
         <!-- registers extension mappings -->
-        <init-param>
+<!--        <init-param>
             <param-name>jaxrs.extensions</param-name>
             <param-value>
                 xml=application/xml
                 json=application/json
             </param-value>
-        </init-param>
+        </init-param>-->
 
         <load-on-startup>1</load-on-startup>
     </servlet>
