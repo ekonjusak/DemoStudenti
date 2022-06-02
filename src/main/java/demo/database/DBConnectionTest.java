@@ -45,7 +45,7 @@ public class DBConnectionTest {
     static public String getAll() throws ClassNotFoundException {
 
         Connection conn = SqlConnection.getConnection();
-        String red = "bla";
+        String red = "bla3";
         System.out.println("u metodi");
         try
         {
@@ -66,7 +66,6 @@ public class DBConnectionTest {
 
     static public StudentModel createStudent(StudentModel sm ) throws ClassNotFoundException, SQLException {
 
-        // Class.forName("org.sqlite.JDBC");
         Connection conn = SqlConnection.getConnection();
 
         String query = "insert into student( id, email, ime, mentorid, oib, phonenumber) values(" + sm.getId() + ",'" + sm.getEmail() + "','" + sm.getIme() + "'," + sm.getMentorid() + "," + sm.getOib() + ",'" + sm.getPhonenumber() + "');";
