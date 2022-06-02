@@ -1,12 +1,12 @@
 package demo.database;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import demo.app.student.StudentModel;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import static java.lang.String.valueOf;
 import static jdk.nashorn.internal.runtime.JSType.toInt32;
@@ -42,40 +42,37 @@ public class DBConnectionTest {
         }
 
     }
-    static public String getAll() throws ClassNotFoundException {
+    static public ArrayList<StudentModel> getAllStudent() throws ClassNotFoundException, SQLException {
 
         Connection conn = SqlConnection.getConnection();
-        String red = "bla3";
         System.out.println("u metodi");
-        try
-        {
-            String query = "Select * From student";
-            Statement st = conn.createStatement();
-            ResultSet rst = st.executeQuery(query);
+        ArrayList<StudentModel> allStudents = new ArrayList<>();
 
-            while(rst.next())
-            {
-                System.out.println(rst.getString("id")+" "+rst.getString("oib"));
-            }
-        }catch(Exception e)
+        String query = "Select * From students";
+        Statement st = conn.createStatement();
+        ResultSet rst = st.executeQuery(query);
+
+        while(rst.next())
         {
-            e.printStackTrace();
+            allStudents.add(new StudentModel(rst.getInt("id"), rst.getString("name"),rst.getString("oib"), rst.getString("mobile_phone"), rst.getString("email"), rst.getInt("mentor_id"))) ;
+            System.out.println(rst.getString("id")+" "+rst.getString("oib"));
         }
-        return red;
+
+        return allStudents;
     }
 
     static public StudentModel createStudent(StudentModel sm ) throws ClassNotFoundException, SQLException {
 
         Connection conn = SqlConnection.getConnection();
 
-        String query = "insert into student( id, email, ime, mentorid, oib, phonenumber) values(" + sm.getId() + ",'" + sm.getEmail() + "','" + sm.getIme() + "'," + sm.getMentorid() + "," + sm.getOib() + ",'" + sm.getPhonenumber() + "');";
+        String query = "insert into student( id, name, oib, mobile_phone, email, mentor_id) values(" + sm.getId() + ",'" + sm.getName() + "','" + sm.getOib() + "'," + sm.getMobilePhone() + "," + sm.getEmail() + ",'" + sm.getMentorId() + "');";
         Statement st = conn.createStatement();
         st.executeUpdate(query); //  query does not return ResultSet
 
         String query2 = "Select * from student where id = "+sm.getId()+";";
         ResultSet resultSet = st.executeQuery(query2);
 
-        StudentModel response = new StudentModel(toInt32(resultSet.getString("id")), resultSet.getString("email"), resultSet.getString("ime"), toNumber(resultSet.getString("mentorid")), toNumber(resultSet.getString("oib")), resultSet.getString("phonenumber"));
+        StudentModel response = new StudentModel(toInt32(resultSet.getString("id")), resultSet.getString("name"), resultSet.getString("oib"), resultSet.getString("mobile_phone"), resultSet.getString("email"), toInt32(resultSet.getString("mentor_id")));
 
         return response;
     }

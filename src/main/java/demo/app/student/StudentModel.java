@@ -1,25 +1,23 @@
 package demo.app.student;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import static java.lang.String.valueOf;
 
 public class StudentModel {
 
     private Integer id;
+    private String name;
+    private String oib;
+    private String mobilePhone;
     private String email;
-    private String ime;
-    private Number mentorid;
-    private Number oib;
-    private String phonenumber;
+    private Integer mentorId;
 
-    public StudentModel(Integer id, String email, String ime, Number mentorid, Number oib, String phonenumber) {
+    public StudentModel(Integer id, String name, String oib, String mobilePhone, String email, Integer mentorId) {
         this.id = id;
-        this.email = email;
-        this.ime = ime;
-        this.mentorid = mentorid;
+        this.name = name;
         this.oib = oib;
-        this.phonenumber = phonenumber;
+        this.mobilePhone = mobilePhone;
+        this.email = email;
+        this.mentorId = mentorId;
     }
 
     public StudentModel() {
@@ -33,6 +31,30 @@ public class StudentModel {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOib() {
+        return oib;
+    }
+
+    public void setOib(String oib) {
+        this.oib = oib;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -41,47 +63,11 @@ public class StudentModel {
         this.email = email;
     }
 
-    public String getIme() {
-        return ime;
+    public Integer getMentorId() {
+        return mentorId;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public Number getMentorid() {
-        return mentorid;
-    }
-
-    public void setMentorid(Number mentorid) {
-        this.mentorid = mentorid;
-    }
-
-    public Number getOib() {
-        return oib;
-    }
-
-    public void setOib(Number oib) {
-        this.oib = oib;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentModel{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", ime='" + ime + '\'' +
-                ", mentorid=" + mentorid +
-                ", oib=" + oib +
-                ", phonenumber='" + phonenumber + '\'' +
-                '}';
+    public void setMentorId(Integer mentorId) {
+        this.mentorId = mentorId;
     }
 }
