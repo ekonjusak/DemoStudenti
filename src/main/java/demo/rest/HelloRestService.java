@@ -32,11 +32,15 @@ public class HelloRestService {
     @Path("/poststudent")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResultSet createStudent(StudentModel sm) throws JsonProcessingException, ClassNotFoundException {
+    public Response createStudent(StudentModel sm){
 
-        ResultSet res = DBConnectionTest.createStudent(sm);
-        System.out.println(res);
-        return res;
+        try{
+            StudentModel responseModel = DBConnectionTest.createStudent(sm);
+            return Response.status(200).entity(responseModel).build();
+        }catch(Exception e){
+            System.out.println("400");
+            return Response.status(400).build();
+        }
     }
 }
 

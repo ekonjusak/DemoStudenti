@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static java.lang.String.valueOf;
+import static jdk.nashorn.internal.runtime.JSType.toInt32;
+import static jdk.nashorn.internal.runtime.JSType.toNumber;
 
 public class DBConnectionTest {
 
@@ -62,26 +64,20 @@ public class DBConnectionTest {
         return red;
     }
 
-    static public ResultSet createStudent(StudentModel sm ) throws ClassNotFoundException, JsonProcessingException {
+    static public StudentModel createStudent(StudentModel sm ) throws ClassNotFoundException, SQLException {
 
-        Class.forName("org.sqlite.JDBC");
+        // Class.forName("org.sqlite.JDBC");
         Connection conn = SqlConnection.getConnection();
-        ResultSet resultSet = null;
-        // pogledaj data type
-        try
-        {
-            String query = "insert into student( id, email, ime, mentorid, oib, phonenumber) values(" + sm.getId() +",'"+ sm.getEmail() +"','"+ sm.getIme()+"',"+ sm.getMentorid() +","+ sm.getOib()+",'"+ sm.getPhonenumber()+"');";
-            // String query = "insert into student( id, email, ime, mentorid, oib, phonenumber) values("+ 21 +", 'moj.mail@gmail.com','ime studenta',"+ 2 +","+12365478+",'0915425874');";
-            Statement st = conn.createStatement();
-            st.executeQuery(query);
 
-            String query2 = "Select * from student where id = "+sm.getId() + ";";
-            resultSet = st.executeQuery(query2);
+        String query = "insert into student( id, email, ime, mentorid, oib, phonenumber) values(" + sm.getId() + ",'" + sm.getEmail() + "','" + sm.getIme() + "'," + sm.getMentorid() + "," + sm.getOib() + ",'" + sm.getPhonenumber() + "');";
+        Statement st = conn.createStatement();
+        st.executeUpdate(query); //  query does not return ResultSet
 
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return (resultSet);
+        String query2 = "Select * from student where id = "+sm.getId()+";";
+        ResultSet resultSet = st.executeQuery(query2);
+
+        StudentModel response = new StudentModel(toInt32(resultSet.getString("id")), resultSet.getString("email"), resultSet.getString("ime"), toNumber(resultSet.getString("mentorid")), toNumber(resultSet.getString("oib")), resultSet.getString("phonenumber"));
+
+        return response;
     }
 }
