@@ -13,10 +13,11 @@ import java.util.ArrayList;
 public class StudentRest {
     @GET // This annotation indicates GET request
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response hello() throws ClassNotFoundException, SQLException {
 
         ArrayList<StudentModel> res = DBConnectionTest.getAllStudent();
-        return Response.status(200).entity(res).build();
+        return Response.status(200).entity(res).type(MediaType.APPLICATION_JSON).build();
     }
 
     @POST
@@ -27,7 +28,7 @@ public class StudentRest {
 
         try{
             StudentModel responseModel = DBConnectionTest.createStudent(sm);
-            return Response.status(200).entity(responseModel).build();
+            return Response.status(200).entity(responseModel).type(MediaType.APPLICATION_JSON).build();
         }catch(Exception e){
             System.out.println("400");
             return Response.status(400).build();

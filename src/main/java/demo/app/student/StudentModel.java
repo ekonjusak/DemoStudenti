@@ -70,4 +70,16 @@ public class StudentModel {
     public void setMentorId(Integer mentorId) {
         this.mentorId = mentorId;
     }
+
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", oib='" + oib + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", email='" + email + '\'' +
+                ", mentorId=" + mentorId +
+                '}';
+    }
 }

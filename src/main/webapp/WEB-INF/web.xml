@@ -14,7 +14,7 @@
         <init-param>
             <param-name>jaxrs.serviceClasses</param-name>
             <param-value>
-                demo.rest.HelloRestService
+                demo.rest.StudentRest
             </param-value>
         </init-param>
         <init-param>

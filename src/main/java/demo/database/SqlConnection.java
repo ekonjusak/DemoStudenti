@@ -15,7 +15,7 @@ public class SqlConnection {
         {
             if(conn==null)
             {
-                String url = "jdbc:sqlite:C:/projekti.gitlab/sqldb/demostudenti.db";
+                String url = "jdbc:sqlite:C:/projekti.gitlab/sqldb/dbschool.db";
                 conn = DriverManager.getConnection(url);
                 System.out.println("Connection to SQLite has been established.");
             }
