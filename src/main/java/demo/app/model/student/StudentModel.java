@@ -1,4 +1,4 @@
-package demo.app.student;
+package demo.app.model.student;
 
 import static java.lang.String.valueOf;
 
