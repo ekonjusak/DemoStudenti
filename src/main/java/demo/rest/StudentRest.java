@@ -33,7 +33,8 @@ public class StudentRest {
             return Response.status(200).entity(responseModel).type(MediaType.APPLICATION_JSON).build();
         }catch(Exception e){
             System.out.println("400");
-            return Response.status(400).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            // return Response.status(400).build();
         }
     }
 

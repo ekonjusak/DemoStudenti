@@ -39,7 +39,7 @@ public class LgcStudent {
         // insert without id
         String query = "insert into students( name, oib, mobile_phone, email, mentor_id) values('" + sm.getName() + "','" + sm.getOib() + "','" + sm.getMobilePhone() + "','" + sm.getEmail() + "'," + sm.getMentorId() + ");";
         Statement st = conn.createStatement();
-        st.executeUpdate(query); //  query does not return ResultSet
+        st.executeUpdate(query);
 
         String query2 = "Select * from students where oib = '"+sm.getOib()+"';";
         ResultSet resultSet = st.executeQuery(query2);
