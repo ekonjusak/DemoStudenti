@@ -1,9 +1,9 @@
-package demo.database;
+package demo.app.database.connector;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class SqlConnection {
+public class SqliteConnector {
 
     private static Connection conn;
 

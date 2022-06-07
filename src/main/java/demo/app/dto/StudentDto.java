@@ -1,8 +1,8 @@
-package demo.app.model.student;
+package demo.app.dto;
 
 import static java.lang.String.valueOf;
 
-public class StudentModel {
+public class StudentDto {
 
     private Integer id;
     private String name;
@@ -11,7 +11,7 @@ public class StudentModel {
     private String email;
     private Integer mentorId;
 
-    public StudentModel(Integer id, String name, String oib, String mobilePhone, String email, Integer mentorId) {
+    public StudentDto(Integer id, String name, String oib, String mobilePhone, String email, Integer mentorId) {
         this.id = id;
         this.name = name;
         this.oib = oib;
@@ -20,7 +20,7 @@ public class StudentModel {
         this.mentorId = mentorId;
     }
 
-    public StudentModel() {
+    public StudentDto() {
     }
 
     public Integer getId() {

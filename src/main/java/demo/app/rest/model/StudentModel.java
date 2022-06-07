@@ -1,6 +1,6 @@
-package demo.app.model.student;
+package demo.app.rest.model;
 
-public class CreateStudent {
+public class StudentModel {
 
     private String name;
     private String oib;
@@ -8,7 +8,7 @@ public class CreateStudent {
     private String email;
     private Integer mentorId;
 
-    public CreateStudent(String name, String oib, String mobilePhone, String email, Integer mentorId) {
+    public StudentModel(String name, String oib, String mobilePhone, String email, Integer mentorId) {
         this.name = name;
         this.oib = oib;
         this.mobilePhone = mobilePhone;
@@ -16,7 +16,7 @@ public class CreateStudent {
         this.mentorId = mentorId;
     }
 
-    public CreateStudent() {
+    public StudentModel() {
     }
 
     public String getName() {
