@@ -18,7 +18,8 @@ public class StudentController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudents() throws ClassNotFoundException, SQLException {
         // promjeni imena funkcija hello
-        ArrayList<StudentDto> res = StudentMgmt.getAllStudent();
+        StudentMgmt studentmgmt = new StudentMgmt();
+        ArrayList<StudentDto> res = studentmgmt.getAllStudent();
         return Response.status(200).entity(res).type(MediaType.APPLICATION_JSON).build();
     }
 
@@ -29,13 +30,15 @@ public class StudentController {
     public Response createStudent(StudentModel sm){
         // promjeni ime funkcije createStudent
         try{
-            StudentDto responseModel = StudentMgmt.createStudent(sm);
-            return Response.status(200).entity(responseModel).type(MediaType.APPLICATION_JSON).build();
+            StudentMgmt studentmgmt = new StudentMgmt();
+            StudentDto response = studentmgmt.createStudent(sm);
+            return Response.status(200).entity(response).type(MediaType.APPLICATION_JSON).build();
         }catch(Exception e){
-            System.out.println("400");
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
-            // return Response.status(400).build();
+            return Response.status(400).entity("nesto ne valja"+ e).type(MediaType.APPLICATION_JSON).build();
         }
+
+
+
     }
 
 

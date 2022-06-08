@@ -32,13 +32,18 @@ public class StudentDao {
         return allStudents;
     }
 
-    public static StudentDto create(StudentModel sm) throws ClassNotFoundException, SQLException {
+    public static StudentDto create(StudentModel sm) throws Exception {
 
-        Connection conn = SqliteConnector.getConnection();
+        Connection conn = SqliteConnector.getConnection(); // stavi u konstruktor
         // insert without id
         String query = "insert into students( name, oib, mobile_phone, email, mentor_id) values('" + sm.getName() + "','" + sm.getOib() + "','" + sm.getMobilePhone() + "','" + sm.getEmail() + "'," + sm.getMentorId() + ");";
         Statement st = conn.createStatement();
-        st.executeUpdate(query);
+
+        try{
+            st.executeUpdate(query);
+        }catch (Exception e){
+            throw new Exception("oib is not unique.");
+        }
 
         String query2 = "Select * from students where oib = '"+sm.getOib()+"';";
         ResultSet resultSet = st.executeQuery(query2);
