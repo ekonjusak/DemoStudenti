@@ -1,5 +1,6 @@
 package demo.app.rest.controller;
 
+import demo.app.database.dao.StudentDao;
 import demo.app.mgmt.StudentMgmt;
 import demo.app.dto.StudentDto;
 import demo.app.rest.model.StudentModel;
@@ -17,10 +18,13 @@ public class StudentController {
     @Path("/students")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudents() throws ClassNotFoundException, SQLException {
-        // promjeni imena funkcija hello
-        StudentMgmt studentmgmt = new StudentMgmt();
-        ArrayList<StudentDto> res = studentmgmt.getAllStudent();
-        return Response.status(200).entity(res).type(MediaType.APPLICATION_JSON).build();
+        try{
+            StudentMgmt studentmgmt = new StudentMgmt();
+            ArrayList<StudentDto> res = studentmgmt.getAllStudent();
+            return Response.status(200).entity(res).type(MediaType.APPLICATION_JSON).build();
+        }catch(Exception e){
+            return Response.status(400).entity("exception: "+e).type(MediaType.APPLICATION_JSON).build();
+        }
     }
 
     @POST
@@ -28,18 +32,43 @@ public class StudentController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createStudent(StudentModel sm){
-        // promjeni ime funkcije createStudent
         try{
             StudentMgmt studentmgmt = new StudentMgmt();
             StudentDto response = studentmgmt.createStudent(sm);
             return Response.status(200).entity(response).type(MediaType.APPLICATION_JSON).build();
         }catch(Exception e){
-            return Response.status(400).entity("nesto ne valja"+ e).type(MediaType.APPLICATION_JSON).build();
+            return Response.status(400).entity("exception: "+e).type(MediaType.APPLICATION_JSON).build();
         }
-
-
-
     }
 
+    @DELETE
+    @Path("/delete")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteStudent(StudentModel sm){
+        // buduci da primam samo oib, zašto imam cijeli objekt StudentModel ?
+        try{
+            StudentMgmt studentmgmt = new StudentMgmt();
+            String response = studentmgmt.deleteStudent(sm);
+            return Response.status(200).entity(response).type(MediaType.APPLICATION_JSON).build();
+        }catch(Exception e){
+            return Response.status(400).entity("exception: "+e).type(MediaType.APPLICATION_JSON).build();
+        }
+    }
 
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateStudent(StudentModel sm){
+        // update po oibu da ide ??
+        // buduci da primam samo oib, zašto imam cijeli objekt StudentModel ?
+        try{
+            StudentMgmt studentmgmt = new StudentMgmt();
+            StudentDto response = studentmgmt.updateStudent(sm);
+            return Response.status(200).entity(response).type(MediaType.APPLICATION_JSON).build();
+        }catch(Exception e){
+            return Response.status(400).entity("exception: "+e).type(MediaType.APPLICATION_JSON).build();
+        }
+    }
 }
