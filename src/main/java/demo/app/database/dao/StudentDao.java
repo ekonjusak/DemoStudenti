@@ -61,70 +61,54 @@ public class StudentDao {
         return response;
     }
 
-    public String delete(String studentOib) throws Exception {
+    public boolean delete(Integer studentId) throws Exception {
 
         Statement st = null;
-
-        String query = "delete from students where oib = '"+studentOib+"';";
+        String query = "delete from students where id = '"+studentId+"';";
         try{
             st = SqliteConnector.getConnection().createStatement();
             st.executeUpdate(query);
         }catch(Exception e){
             throw new Exception("Query can not be executed");
         }
-
-        if(isOibUnique(studentOib)){
-            System.out.println("student s oibom: "+studentOib+"je obrisan");
-            return "oib: "+ studentOib+" is deleted";
-        }else{
-            System.out.println("Student is not deleted");
-            throw new Exception("Student is not deleted");
-        }
-
+        // vrati broj obrisanih redaka
+        return true;
     }
-    public StudentDto update(StudentDto studentdto) throws Exception {
+    public StudentDto update(Integer studentId,StudentDto studentdto) throws Exception {
 
         Statement st = null;
         ResultSet resultSet = null;
-        StudentDto studentUpdate = null;
+        StudentDto StudentFromDbForUpdate = null;
         StudentDto response = null;
         try{
             st = SqliteConnector.getConnection().createStatement();
         }catch(Exception e){
             throw e;
         }
-        // check is student in DB
-        if(!isOibUnique(studentdto.getOib())){
-            System.out.println("student exist in DB");
-        }else{
-            System.out.println("Student is not in database");
-            throw new Exception("Student is not in database. Student can not be updated.");
-        }
-        // update logic
-        // proba 1
 
-        String query = "Select * from students where oib = '"+studentdto.getOib()+"';";
+        String query = "Select * from students where id = "+studentId+";";
         try {
             resultSet = st.executeQuery(query);
-            studentUpdate = new StudentDto(toInt32(resultSet.getString("id")), resultSet.getString("name"), resultSet.getString("oib"), resultSet.getString("mobile_phone"), resultSet.getString("email"), toInt32(resultSet.getString("mentor_id")));
+            // promjeni naziv studentUpade
+            StudentFromDbForUpdate = new StudentDto(toInt32(resultSet.getString("id")), resultSet.getString("name"), resultSet.getString("oib"), resultSet.getString("mobile_phone"), resultSet.getString("email"), toInt32(resultSet.getString("mentor_id")));
         }catch(Exception e){
-            throw new Exception("query failed.");
+            throw new Exception("query failed. Student with id does not exist.");
         }
 
         if(studentdto.getName()!=null){
-            studentUpdate.setName(studentdto.getName());
+            StudentFromDbForUpdate.setName(studentdto.getName());
         }
         if(studentdto.getMobilePhone()!=null){
-            studentUpdate.setMobilePhone(studentdto.getMobilePhone());
+            StudentFromDbForUpdate.setMobilePhone(studentdto.getMobilePhone());
         }
         if(studentdto.getEmail()!=null){
-            studentUpdate.setEmail(studentdto.getEmail());
+            StudentFromDbForUpdate.setEmail(studentdto.getEmail());
         }
         if(studentdto.getMentorId()!=null){
-            studentUpdate.setMentorId(studentdto.getMentorId());
+            StudentFromDbForUpdate.setMentorId(studentdto.getMentorId());
         }
         try{
-            String query1 = "update students SET mobile_phone ='"+studentUpdate.getMobilePhone() +"', name = '"+ studentUpdate.getName() +"', email= '"+studentUpdate.getEmail()+"' , mentor_id = "+studentUpdate.getMentorId()+" where id = "+studentUpdate.getId()+";";
+            String query1 = "update students SET mobile_phone ='"+StudentFromDbForUpdate.getMobilePhone() +"', name = '"+ StudentFromDbForUpdate.getName() +"', email= '"+StudentFromDbForUpdate.getEmail()+"' , mentor_id = "+StudentFromDbForUpdate.getMentorId()+", oib ='"+StudentFromDbForUpdate.getOib()+"' where id = "+StudentFromDbForUpdate.getId()+";";
             st = SqliteConnector.getConnection().createStatement();
             st.executeUpdate(query1);
         }catch(Exception e){
@@ -132,7 +116,7 @@ public class StudentDao {
             throw new Exception("Query can not update student.");
         }
 
-        String query2 = "Select * from students where oib = '"+studentdto.getOib()+"';";
+        String query2 = "Select * from students where id = "+studentdto.getId()+";";
         try {
             resultSet = st.executeQuery(query2);
             response = new StudentDto(toInt32(resultSet.getString("id")), resultSet.getString("name"), resultSet.getString("oib"), resultSet.getString("mobile_phone"), resultSet.getString("email"), toInt32(resultSet.getString("mentor_id")));

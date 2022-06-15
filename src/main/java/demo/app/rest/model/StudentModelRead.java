@@ -1,21 +1,24 @@
-package demo.app.dto;
+package demo.app.rest.model;
 
-public class MentorDto {
+public class StudentModelRead {
 
     private Integer id;
     private String name;
     private String oib;
     private String mobilePhone;
     private String email;
-    public MentorDto(Integer id, String name, String oib, String mobilePhone, String email) {
+    private Integer mentorId;
+
+    public StudentModelRead(Integer id, String name, String oib, String mobilePhone, String email, Integer mentorId) {
         this.id = id;
         this.name = name;
         this.oib = oib;
         this.mobilePhone = mobilePhone;
         this.email = email;
+        this.mentorId = mentorId;
     }
 
-    public MentorDto() {
+    public StudentModelRead() {
     }
 
     public Integer getId() {
@@ -56,5 +59,25 @@ public class MentorDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getMentorId() {
+        return mentorId;
+    }
+
+    public void setMentorId(Integer mentorId) {
+        this.mentorId = mentorId;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentModelRead{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", oib='" + oib + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", email='" + email + '\'' +
+                ", mentorId=" + mentorId +
+                '}';
     }
 }

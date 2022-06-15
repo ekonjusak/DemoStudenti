@@ -1,22 +1,20 @@
 package demo.app.rest.model;
 
-public class StudentModel {
+public class MentorModel {
 
     private String name;
     private String oib;
     private String mobilePhone;
     private String email;
-    private Integer mentorId;
 
-    public StudentModel(String name, String oib, String mobilePhone, String email, Integer mentorId) {
+    public MentorModel(String name, String oib, String mobilePhone, String email) {
         this.name = name;
         this.oib = oib;
         this.mobilePhone = mobilePhone;
         this.email = email;
-        this.mentorId = mentorId;
     }
 
-    public StudentModel() {
+    public MentorModel() {
     }
 
     public String getName() {
@@ -49,24 +47,5 @@ public class StudentModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Integer getMentorId() {
-        return mentorId;
-    }
-
-    public void setMentorId(Integer mentorId) {
-        this.mentorId = mentorId;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentModel{" +
-                ", name='" + name + '\'' +
-                ", oib='" + oib + '\'' +
-                ", mobilePhone='" + mobilePhone + '\'' +
-                ", email='" + email + '\'' +
-                ", mentorId=" + mentorId +
-                '}';
     }
 }

@@ -23,16 +23,6 @@
                 com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider
             </param-value>
         </init-param>
-
-        <!-- registers extension mappings -->
-<!--        <init-param>
-            <param-name>jaxrs.extensions</param-name>
-            <param-value>
-                xml=application/xml
-                json=application/json
-            </param-value>
-        </init-param>-->
-
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -41,4 +31,20 @@
         <!--Prefix for endpoint-->
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
+    <Configuration status="WARN">
+
+        <Appenders>
+            <!-- By default => console -->
+            <Console name="Console" target="SYSTEM_OUT">
+                <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            </Console>
+        </Appenders>
+
+        <Loggers>
+            <Root level="debug">
+                <AppenderRef ref="Console"/>
+            </Root>
+        </Loggers>
+    </Configuration>
 </web-app>
