@@ -1,0 +1,16 @@
+2022-06-21 09:39:35:527 +0200 INFO demo.app.mgmt.StudentMgmt - in method getAllStudent
+2022-06-21 09:39:35:530 +0200 WARN demo.app.mgmt.StudentMgmt - in method getAllStudent
+2022-06-21 09:39:35:687 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * From students
+2022-06-21 09:39:46:110 +0200 INFO demo.app.mgmt.StudentMgmt - in method createStudent
+2022-06-21 09:39:46:110 +0200 INFO demo.app.database.dao.StudentDao - executing query: insert into students( name, oib, mobile_phone, email, mentor_id) values('Ana','98765421','0912365422','anam@gmail.com',1);
+2022-06-21 09:39:46:126 +0200 INFO demo.app.database.dao.StudentDao - executing query: insert into students( name, oib, mobile_phone, email, mentor_id) values('Ana','98765421','0912365422','anam@gmail.com',1);
+2022-06-21 09:39:56:497 +0200 INFO demo.app.mgmt.StudentMgmt - in method deleteStudent
+2022-06-21 09:39:56:497 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = 16;
+2022-06-21 09:40:07:519 +0200 INFO demo.app.mgmt.StudentMgmt - in method updateStudent
+2022-06-21 09:40:07:519 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = 8;
+2022-06-21 09:40:07:520 +0200 INFO demo.app.database.dao.StudentDao - executing query: update students SET mobile_phone ='0995553336', name = 'Lana', email= 'novi@email.com' , mentor_id = 2, oib ='12229922' where id = 8;
+2022-06-21 09:40:07:524 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = null;
+2022-06-21 09:40:45:514 +0200 INFO demo.app.mgmt.StudentMgmt - in method updateStudent
+2022-06-21 09:40:45:514 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = 8;
+2022-06-21 09:40:45:514 +0200 INFO demo.app.database.dao.StudentDao - executing query: update students SET mobile_phone ='0995553336', name = 'Lana', email= 'novi@email.com' , mentor_id = 2, oib ='12229922' where id = 8;
+2022-06-21 09:40:45:518 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = null;

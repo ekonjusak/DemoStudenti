@@ -1,10 +1,14 @@
 package demo.app.rest.model;
 
+import demo.app.mgmt.PropertiesReader;
+
 public class StudentModelValidationInput {
 
     public boolean isStudentModelUpdateInputOk(StudentModelCreateUpdate sm) throws Exception {
 
-        if(!(sm.getName().matches("[a-zA-Z]{2,20}")) ){
+        PropertiesReader pr = new PropertiesReader();
+
+        if(!(sm.getName().matches("[a-zA-Z]{2,"+pr.name_max_char+"}")) ){
             System.out.println("Name should contains from 2 to 20 letters, a-zA-Z.");
             throw new Exception("Name should contains from 2 to 20 letters, a-zA-Z.");
         } else if (!(sm.getOib().matches("[0-9]{8}")) ){

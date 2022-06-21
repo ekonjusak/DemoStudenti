@@ -1,0 +1,2 @@
+2022-06-20 13:11:20:942 +0200 INFO demo.app.mgmt.StudentMgmt - in method getAllStudent
+2022-06-20 13:11:20:946 +0200 WARN demo.app.mgmt.StudentMgmt - in method getAllStudent

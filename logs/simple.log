@@ -1,0 +1,4 @@
+2022-06-21 09:43:32:538 +0200 INFO demo.app.mgmt.StudentMgmt - in method updateStudent
+2022-06-21 09:43:32:687 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = '8';
+2022-06-21 09:43:32:735 +0200 INFO demo.app.database.dao.StudentDao - executing query: update students SET mobile_phone ='0995553336', name = 'Lana', email= 'novi@email.com' , mentor_id = 2, oib ='12229922' where id = 8;
+2022-06-21 09:43:32:742 +0200 INFO demo.app.database.dao.StudentDao - executing query: Select * from students where id = 8;
