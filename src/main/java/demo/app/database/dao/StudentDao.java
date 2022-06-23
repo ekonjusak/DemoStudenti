@@ -154,7 +154,7 @@ public class StudentDao {
             st = SqliteConnector.getConnection().createStatement();
             resultSet = st.executeQuery(query);
             StudentDto sd = new StudentDto(toInt32(resultSet.getString("id")), resultSet.getString("name"), resultSet.getString("oib"), resultSet.getString("mobile_phone"), resultSet.getString("email"), toInt32(resultSet.getString("mentor_id")));
-            System.out.println("student with id "+sd.getOib()+" is in DB");
+            System.out.println("student with id "+studentId+" is in DB");
             logger.debug("Ending method isIdExist");
             return true; // id exist
 

@@ -32,6 +32,7 @@ public class StudentMgmt {
 
     public StudentDto createStudent(StudentDto stDto) throws Exception {
         logger.debug("Starting method createStudent");
+        System.out.println(stDto.getOib()+" "+ stDto.getName()+" "+ stDto.getId());
         StudentDto response = null;
         try{
             StudentDao studentdao = new StudentDao();
