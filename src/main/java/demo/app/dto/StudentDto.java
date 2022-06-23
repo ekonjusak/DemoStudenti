@@ -1,7 +1,5 @@
 package demo.app.dto;
 
-import static java.lang.String.valueOf;
-
 public class StudentDto {
 
     private Integer id;

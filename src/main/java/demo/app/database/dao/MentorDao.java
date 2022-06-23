@@ -2,7 +2,6 @@ package demo.app.database.dao;
 
 import demo.app.database.connector.SqliteConnector;
 import demo.app.dto.MentorDto;
-import demo.app.dto.StudentDto;
 import org.slf4j.Logger;
 
 import java.sql.Connection;

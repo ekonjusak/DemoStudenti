@@ -3,8 +3,6 @@ package demo.app.mgmt;
 import demo.app.database.dao.StudentDao;
 import demo.app.dto.StudentDto;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 
 import static org.slf4j.LoggerFactory.getLogger;

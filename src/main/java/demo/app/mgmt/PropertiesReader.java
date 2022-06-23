@@ -8,7 +8,7 @@ import java.util.Properties;
 public class PropertiesReader {
 
     public HashMap<String, String> getConfigProperties() {
-        // TODO: nije se promjneilo name_max_char popravi
+
         HashMap<String, String> ConfigProperties = new HashMap<String, String>();
         String filename = "config.properties";
         try (InputStream input = PropertiesReader.class.getClassLoader().getResourceAsStream(filename)) {
