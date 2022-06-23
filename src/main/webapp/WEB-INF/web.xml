@@ -14,6 +14,7 @@
         <init-param>
             <param-name>jaxrs.serviceClasses</param-name>
             <param-value>
+                demo.app.rest.controller.MentorController,
                 demo.app.rest.controller.StudentController
             </param-value>
         </init-param>

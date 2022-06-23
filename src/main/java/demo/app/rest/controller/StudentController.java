@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-@Path("/")
+@Path("/student/") // TODO: ovo si promjenila
 public class StudentController {
 
     private static final Logger logger = getLogger(StudentController.class);
@@ -71,7 +71,7 @@ public class StudentController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteStudent(@PathParam("id") Integer id){
         logger.info("Starting DELETE method deleteStudent");
-        logger.debug("Starting method createStudent with input params: id= "+ id);
+        logger.debug("Starting method deleteStudent with input params: id= "+ id);
         try{
             StudentMgmt studentmgmt = new StudentMgmt();
             boolean response = studentmgmt.deleteStudent(id);
