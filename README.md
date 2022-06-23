@@ -1,2 +1,2 @@
 # DemoProjekt
-Demo project in java
+Click on branch Development
