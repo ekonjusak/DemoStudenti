@@ -15,7 +15,7 @@ public class StudentMgmt {
     public ArrayList<StudentDto> getAllStudent() throws Exception {
         logger.debug("Starting method getAllStudent");
 
-        ArrayList<StudentDto> allStudents = null;
+        ArrayList<StudentDto> allStudents;
         try{
             StudentDao studentdao = new StudentDao();
             allStudents = studentdao.getAllStudent();
@@ -31,7 +31,7 @@ public class StudentMgmt {
     public StudentDto createStudent(StudentDto stDto) throws Exception {
         logger.debug("Starting method createStudent");
         System.out.println(stDto.getOib()+" "+ stDto.getName()+" "+ stDto.getId());
-        StudentDto response = null;
+        StudentDto response;
         try{
             StudentDao studentdao = new StudentDao();
             response = studentdao.create(stDto);
@@ -60,7 +60,7 @@ public class StudentMgmt {
 
     public StudentDto updateStudent(Integer studentId,StudentDto stDto) throws Exception {
         logger.debug("Starting method updateStudent");
-        StudentDto response = null;
+        StudentDto response;
         try{
             StudentDao studentdao = new StudentDao();
             response = studentdao.update(studentId,stDto);

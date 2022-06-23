@@ -9,7 +9,7 @@ public class PropertiesReader {
 
     public HashMap<String, String> getConfigProperties() {
 
-        HashMap<String, String> ConfigProperties = new HashMap<String, String>();
+        HashMap<String, String> ConfigProperties = new HashMap<>();
         String filename = "config.properties";
         try (InputStream input = PropertiesReader.class.getClassLoader().getResourceAsStream(filename)) {
 

@@ -12,7 +12,7 @@ public class MentorMgmt {
     private static final Logger logger = getLogger(MentorMgmt.class);
     public ArrayList<MentorDto> getAllMentors() throws Exception {
         logger.debug("Starting method getAllMentors");
-        ArrayList<MentorDto> allMentors = null;
+        ArrayList<MentorDto> allMentors;
         try{
             MentorDao mentordao = new MentorDao();
             allMentors = mentordao.getAllMentors();
@@ -26,7 +26,7 @@ public class MentorMgmt {
 
     public MentorDto createMentor(MentorDto mtDto) throws Exception {
         logger.debug("Starting method createMentor");
-        MentorDto response = null;
+        MentorDto response;
         try{
             MentorDao mentordao = new MentorDao();
             response = mentordao.create(mtDto);
@@ -55,7 +55,7 @@ public class MentorMgmt {
 
     public MentorDto updateMentor(Integer mentorId,MentorDto mtDto) throws Exception {
         logger.debug("Starting method updateMentor");
-        MentorDto response = null;
+        MentorDto response;
         try{
             MentorDao mentordao = new MentorDao();
             response = mentordao.update(mentorId,mtDto);

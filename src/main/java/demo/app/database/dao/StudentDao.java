@@ -41,8 +41,8 @@ public class StudentDao {
 
     public StudentDto create(StudentDto sd) throws Exception {
         logger.debug(" Starting method create");
-        Statement st = null;
-        ResultSet resultSet = null;
+        Statement st;
+        ResultSet resultSet;
         String query = "insert into students( name, oib, mobile_phone, email, mentor_id) values('" + sd.getName() + "','" + sd.getOib() + "','" + sd.getMobilePhone() + "','" + sd.getEmail() + "'," + sd.getMentorId() + ");";
 
         try{
@@ -70,7 +70,7 @@ public class StudentDao {
 
     public boolean delete(Integer studentId) throws Exception {
         logger.debug("Starting method delete");
-        Statement st = null;
+        Statement st;
         String query = "delete from students where id = "+studentId+";";
         try{
             logger.debug("executing query: "+ query);
@@ -86,10 +86,10 @@ public class StudentDao {
     }
     public StudentDto update(Integer studentId,StudentDto studentdto) throws Exception {
         logger.debug("Starting method update");
-        Statement st = null;
-        ResultSet resultSet = null;
-        StudentDto StudentFromDbForUpdate = null;
-        StudentDto response = null;
+        Statement st;
+        ResultSet resultSet;
+        StudentDto StudentFromDbForUpdate;
+        StudentDto response;
         try{
             st = SqliteConnector.getConnection().createStatement();
         }catch(Exception e){
@@ -142,10 +142,10 @@ public class StudentDao {
 
     }
 
-    public boolean isIdExist(Integer studentId) throws Exception {
+    public boolean isIdExist(Integer studentId) {
         logger.debug("Starting method isIdExist");
-        Statement st = null;
-        ResultSet resultSet = null;
+        Statement st;
+        ResultSet resultSet;
 
         String query = "Select * from students where id = "+studentId+";";
         try{

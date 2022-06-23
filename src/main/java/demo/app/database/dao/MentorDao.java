@@ -42,8 +42,8 @@ public class MentorDao {
 
     public MentorDto create(MentorDto md) throws Exception {
         logger.debug(" Starting method create");
-        Statement st = null;
-        ResultSet resultSet = null;
+        Statement st;
+        ResultSet resultSet;
         String query = "insert into mentors( name, oib, mobile_phone, email) values('" + md.getName() + "','" + md.getOib() + "','" + md.getMobilePhone() + "','" + md.getEmail() + "');";
 
         try{
@@ -71,7 +71,7 @@ public class MentorDao {
 
     public boolean delete(Integer mentorId) throws Exception {
         logger.debug("Starting method delete");
-        Statement st = null;
+        Statement st;
         String query = "delete from mentors where id = "+mentorId+";";
         try{
             logger.debug("executing query: "+ query);
@@ -88,10 +88,10 @@ public class MentorDao {
 
     public MentorDto update(Integer mentorId,MentorDto mentordto) throws Exception {
         logger.debug("Starting method update");
-        Statement st = null;
-        ResultSet resultSet = null;
-        MentorDto mentorFromDbForUpdate = null;
-        MentorDto response = null;
+        Statement st;
+        ResultSet resultSet;
+        MentorDto mentorFromDbForUpdate;
+        MentorDto response;
         try{
             st = SqliteConnector.getConnection().createStatement();
         }catch(Exception e){
@@ -145,8 +145,8 @@ public class MentorDao {
 
     public boolean isIdExist(Integer mentorId) {
         logger.debug("Starting method isIdExist");
-        Statement st = null;
-        ResultSet resultSet = null;
+        Statement st;
+        ResultSet resultSet;
 
         String query = "Select * from mentors where id = "+mentorId+";";
         try{
